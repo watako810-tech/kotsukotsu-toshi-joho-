@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: theme("colors.bg");
+  color: theme("colors.ink");
+}
+
+/* キーボードフォーカスを明示する（アクセシビリティ） */
+:focus-visible {
+  outline: 2px solid theme("colors.emerald.DEFAULT");
+  outline-offset: 2px;
+}
+
+/* ===========================================================
+   記事本文（Markdownレンダリング結果）のタイポグラフィ
+   =========================================================== */
+.article-prose {
+  @apply leading-relaxed text-[15px] text-ink;
+}
+
+.article-prose > * + * {
+  @apply mt-5;
+}
+
+.article-prose h1 {
+  @apply mt-10 mb-4 text-2xl font-bold text-navy sm:text-3xl;
+}
+
+.article-prose h2 {
+  @apply mt-12 mb-4 scroll-mt-24 border-b border-line pb-2 text-xl font-bold text-navy sm:text-2xl;
+}
+
+.article-prose h3 {
+  @apply mt-8 mb-3 scroll-mt-24 text-lg font-bold text-navy;
+}
+
+.article-prose p {
+  @apply leading-relaxed;
+}
+
+.article-prose a {
+  @apply font-medium text-emerald-dark underline decoration-emerald/40 underline-offset-2 hover:decoration-emerald;
+}
+
+.article-prose strong {
+  @apply font-bold text-navy;
+}
+
+/* 引用ブロック＝「アナウンス」枠として上品に装飾 */
+.article-prose blockquote {
+  @apply relative my-6 rounded-r-card border-l-4 border-emerald bg-emerald-soft/40 py-4 pl-6 pr-4 text-[15px] leading-relaxed text-navy-light;
+}
+
+.article-prose blockquote p {
+  @apply m-0;
+}
+
+.article-prose blockquote p + p {
+  @apply mt-2;
+}
+
+.article-prose ul {
+  @apply list-disc space-y-1.5 pl-6;
+}
+
+.article-prose ol {
+  @apply list-decimal space-y-1.5 pl-6;
+}
+
+.article-prose table {
+  @apply w-full border-collapse overflow-hidden rounded-card border border-line text-sm;
+}
+
+.article-prose thead {
+  @apply bg-navy text-white;
+}
+
+.article-prose th {
+  @apply px-4 py-2.5 text-left font-semibold;
+}
+
+.article-prose td {
+  @apply border-t border-line px-4 py-2.5;
+}
+
+.article-prose tbody tr:nth-child(even) {
+  @apply bg-slate-50;
+}
+
+.article-prose code {
+  @apply rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[13px] text-navy;
+}
+
+.article-prose hr {
+  @apply my-10 border-line;
+}
+
+/* AD_SLOTコメント・div等、記事内に紛れ込んだ生HTMLの広告枠を綺麗に見せる */
+.article-prose .ad-slot {
+  @apply relative my-8 flex min-h-[100px] items-center justify-center overflow-hidden rounded-card border border-dashed border-line bg-slate-50 text-xs text-muted;
+}
+
+.article-prose .ad-slot::before {
+  content: "広告枠（AdSense設定後に表示されます）";
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up {
+    animation: none;
+  }
+}

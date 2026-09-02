@@ -1,0 +1,19 @@
+{
+  "note": "バックエンドAPI（stock-platform/backend）に接続できない場合に表示するフォールバック値です。銘柄名・市場区分は固定情報ですが、株価・PER・PBR等の指標はAPI接続後にリアルタイムのyfinanceデータへ自動的に置き換わります（このファイルではあえて数値を入れていません）。",
+  "jp": [
+    { "symbol": "7203.T", "short_name": "トヨタ自動車", "sector": "自動車" },
+    { "symbol": "6758.T", "short_name": "ソニーグループ", "sector": "電機・エンタメ" },
+    { "symbol": "9984.T", "short_name": "ソフトバンクグループ", "sector": "情報・通信" },
+    { "symbol": "8306.T", "short_name": "三菱UFJフィナンシャル・グループ", "sector": "銀行" },
+    { "symbol": "9432.T", "short_name": "NTT", "sector": "情報・通信" },
+    { "symbol": "8035.T", "short_name": "東京エレクトロン", "sector": "半導体製造装置" }
+  ],
+  "us": [
+    { "symbol": "AAPL", "short_name": "Apple", "sector": "Technology" },
+    { "symbol": "MSFT", "short_name": "Microsoft", "sector": "Technology" },
+    { "symbol": "NVDA", "short_name": "NVIDIA", "sector": "Semiconductors" },
+    { "symbol": "JPM", "short_name": "JPMorgan Chase", "sector": "Financials" },
+    { "symbol": "JNJ", "short_name": "Johnson & Johnson", "sector": "Healthcare" },
+    { "symbol": "V", "short_name": "Visa", "sector": "Financials" }
+  ]
+}

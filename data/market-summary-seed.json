@@ -1,0 +1,30 @@
+{
+  "asOf": "2026-09-02",
+  "note": "バックエンドAPIに接続できない場合に表示するフォールバック値。2026年9月2日時点の公開報道（財経新聞・Investing.com・alainguillot.com市況まとめ）に基づく実際の終値です。",
+  "indices": [
+    {
+      "key": "nikkei225",
+      "symbol": "^N225",
+      "name": "日経平均株価",
+      "current": 64325.64,
+      "change": -1889.70,
+      "change_percent": -2.85,
+      "history": [
+        { "date": "2026-09-01", "close": 66215.34 },
+        { "date": "2026-09-02", "close": 64325.64 }
+      ]
+    },
+    {
+      "key": "sp500",
+      "symbol": "^GSPC",
+      "name": "S&P500",
+      "current": 7631.47,
+      "change": -52.89,
+      "change_percent": -0.70,
+      "history": [
+        { "date": "2026-08-31", "close": 7684.36 },
+        { "date": "2026-09-01", "close": 7631.47 }
+      ]
+    }
+  ]
+}
