@@ -10,7 +10,8 @@
 - **レスポンシブ**: モバイルファースト。ヘッダーはコンパクトなハンバーガーメニュー
 - **記事コンテンツ**: `content/articles/*.md` をMarkdownで管理し、目次(TOC)を自動生成
 - **市況データ**: `stock-platform/backend`（FastAPI + yfinance）を共有バックエンドとして利用。未接続時は `data/*-seed.json` のフォールバック値を表示
-- **Google AdSense**: 広告表示用コンポーネント（`AdSlot`）を実装済み。`stock-platform/frontend` と同じ仕組みで、Publisher ID未設定時はプレースホルダー表示
+- **Google AdSense**: 広告タグ・`ads.txt`・所有権確認メタタグを実装済み。広告の配置はAdSenseの「自動広告」に任せる方針（手動の広告枠は置いていない）
+- **固定ページ**: 運営者情報（`/about`）・プライバシーポリシー・免責事項（`/privacy`）・お問い合わせ（`/contact`、Googleフォームへのリンク）
 
 ## セットアップ
 
@@ -38,13 +39,14 @@ uvicorn main:app --reload --port 8000
 app/                     ページ（App Router）
   page.tsx                トップページ（ヒーロー・市況サマリー・比較表・記事一覧・noteバナー）
   articles/page.tsx       記事一覧ページ
-  articles/[slug]/page.tsx 記事詳細ページ（TOC・広告枠・免責事項を含む）
+  articles/[slug]/page.tsx 記事詳細ページ（TOC・免責事項を含む）
+  about/ privacy/ contact/  運営者情報・プライバシーポリシー・お問い合わせ
   robots.ts, sitemap.ts   クローラー対応
   ads.txt/route.ts        AdSense用ads.txtを動的生成
 components/              UIコンポーネント（Header, Hero, MarketSummary, ScreenerTable, ArticleCard 等）
 content/articles/*.md    記事本文（Markdown + frontmatter）
 data/*.json              市況・銘柄データのフォールバック（seed）
-lib/                     Markdown変換、API取得、フォーマット関数
+lib/                     Markdown変換、API取得、フォーマット関数、サイト共通情報（site.ts）
 ```
 
 ## 新しい記事を追加する
@@ -71,10 +73,21 @@ excerpt: "記事一覧カードに表示される1〜2文の要約"
 
 ## Google AdSenseを有効にする
 
-`stock-platform/frontend` と同じ仕組みです。`.env.local` の `NEXT_PUBLIC_ADSENSE_ID` に
-審査承認後のPublisher ID（`ca-pub-...`）を設定するだけで、広告タグ・`/ads.txt`・
-サイト所有権確認メタタグがすべて自動的に有効化されます。詳細は
-`stock-platform/README.md` の「Google AdSenseを有効にする手順」を参照してください。
+`NEXT_PUBLIC_ADSENSE_ID` にPublisher ID（`ca-pub-...`）を設定するだけで、広告タグ・`/ads.txt`・
+サイト所有権確認メタタグがすべて自動的に有効化されます。
+
+広告の表示位置は、AdSense管理画面の「広告」→「サイトごと」で**自動広告をオン**にして、Googleに任せます。
+記事Markdown内に古い形式の広告枠（`<!-- AD_SLOT: ... -->` 〜 `<!-- /AD_SLOT -->`）が残っていても、
+表示時に自動で取り除かれます。特定の位置に広告を固定したい場合は、AdSenseで広告ユニットを作成し、
+発行された番号を `components/AdSlot.tsx` に渡して配置してください。
+
+## お問い合わせフォームを設定する
+
+1. Googleフォームで「お名前」「メールアドレス」「お問い合わせ内容」などの項目を持つフォームを作成する
+2. 右上の「送信」→ リンクのアイコンからURL（`https://forms.gle/...`）をコピーする
+3. Vercelの環境変数 `NEXT_PUBLIC_CONTACT_FORM_URL` にそのURLを設定して再デプロイする
+
+未設定の間は、お問い合わせページに「準備中」と表示されます。
 
 ## 本番デプロイの目安
 
@@ -83,6 +96,6 @@ excerpt: "記事一覧カードに表示される1〜2文の要約"
 
 ## 今後の拡張ポイント
 
-- `content/articles/` への日次追加を `scripts/generate_daily_content.py`（stock-platformプロジェクト側）と連携し、自動化する
 - noteマガジンの実際のリンク（`NoteBanner` の `href`）を設定する
-- プライバシーポリシー・免責事項の独立ページ（`stock-platform/frontend/app/privacy` 等）を移植する
+- アクセス解析ツールを導入する場合は、`/privacy` の「アクセス解析ツールについて」を更新する
+- （記事の日次自動追加は `AI投資情報/scripts/publish_daily_article.py` と `AUTOMATION.md` を参照）

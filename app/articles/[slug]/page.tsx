@@ -5,7 +5,6 @@ import { Calendar, ArrowLeft } from "lucide-react";
 import { getAllArticleSlugs, getArticleBySlug } from "@/lib/articles";
 import { formatDateLabel } from "@/lib/format";
 import { TableOfContents } from "@/components/TableOfContents";
-import { AdSlot } from "@/components/AdSlot";
 import { DisclaimerBlock } from "@/components/DisclaimerBlock";
 import { Badge } from "@/components/Badge";
 
@@ -55,8 +54,6 @@ export default async function ArticleDetailPage({ params }: Props) {
           {formatDateLabel(article.date)}
         </p>
       </header>
-
-      <AdSlot slot="9988776655" label="広告" className="mb-8" />
 
       <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_260px] lg:items-start lg:gap-10">
         <article

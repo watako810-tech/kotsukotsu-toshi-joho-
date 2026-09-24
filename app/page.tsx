@@ -5,7 +5,6 @@ import { MarketSummary } from "@/components/MarketSummary";
 import { ScreenerTable } from "@/components/ScreenerTable";
 import { ArticleCard } from "@/components/ArticleCard";
 import { NoteBanner } from "@/components/NoteBanner";
-import { AdSlot } from "@/components/AdSlot";
 import { getMarketSummary, getScreenerComparison } from "@/lib/api";
 import { getAllArticleMeta } from "@/lib/articles";
 
@@ -27,8 +26,6 @@ export default async function HomePage() {
         <MarketSummary indices={indices} isLive={marketLive} asOf={asOf} />
 
         <ScreenerTable jp={jp} us={us} isLive={screenerLive} />
-
-        <AdSlot slot="1122334455" label="広告" />
 
         <section aria-labelledby="latest-articles-heading">
           <div className="mb-5 flex flex-wrap items-end justify-between gap-2">

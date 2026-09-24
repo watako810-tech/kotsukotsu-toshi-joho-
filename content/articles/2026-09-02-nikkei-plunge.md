@@ -8,17 +8,6 @@ excerpt: "2026年9月2日の東京株式市場は大幅続落。日経平均は�
 
 > **2026年9月2日(水)の東京株式市場は大幅続落。日経平均株価の終値は前日比 -1,889.70円（-2.85%）の 64,325.64円** となりました。中東情勢の緊迫化と、長期金利の上昇が同時に重荷となった格好です。
 
-<!-- AD_SLOT: article-top -->
-<div class="ad-slot" data-ad-slot="article-top">
-  <ins class="adsbygoogle"
-       style="display:block; min-height:100px;"
-       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-       data-ad-slot="XXXXXXXXXX"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
-<!-- /AD_SLOT -->
-
 ## 数字でわかる今日の相場
 
 今日の値動きを、まずは数字だけで押さえておきましょう。
@@ -55,17 +44,6 @@ excerpt: "2026年9月2日の東京株式市場は大幅続落。日経平均は�
 
 個別銘柄では、ソフトバンクグループ（9984）、東京エレクトロン（8035）、アドバンテスト、ファナック、ソニーグループ（6758）といった値がさ株・輸出関連株を中心に下落が目立ちました。半導体関連など日頃から値動きの大きい銘柄は、こうした「リスクオフ（危険回避）」の局面で下げ幅が大きくなりやすい傾向があります。
 
-<!-- AD_SLOT: article-middle -->
-<div class="ad-slot" data-ad-slot="article-middle">
-  <ins class="adsbygoogle"
-       style="display:block; min-height:100px;"
-       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-       data-ad-slot="XXXXXXXXXX"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
-<!-- /AD_SLOT -->
-
 ## 為替：円安は止まらず、ドル円は159円台後半
 
 株安と同時に進んだのが、ドル円の動きです。ドル円は一時160円29銭まで値を上げましたが、その後は原油高・米金利上昇の勢いがやや一服したことでドル買いも後退し、159円台後半で推移しました。
@@ -92,17 +70,6 @@ excerpt: "2026年9月2日の東京株式市場は大幅続落。日経平均は�
 ## まとめ
 
 2026年9月2日の東京株式市場は、地政学リスクの高まりと長期金利の上昇という2つの要因が重なり、日経平均は前日比-2.85%の大幅安となりました。東証33業種すべてが下落する全面安という、警戒感の強い相場展開です。ドル円も方向感が定まりにくい状況が続いており、しばらくは金利と地政学リスクの両方から目が離せない展開が続きそうです。
-
-<!-- AD_SLOT: article-bottom -->
-<div class="ad-slot" data-ad-slot="article-bottom">
-  <ins class="adsbygoogle"
-       style="display:block; min-height:100px;"
-       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-       data-ad-slot="XXXXXXXXXX"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
-<!-- /AD_SLOT -->
 
 **情報ソース**
 

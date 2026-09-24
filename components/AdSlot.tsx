@@ -18,9 +18,15 @@ declare global {
 }
 
 /**
- * Google AdSenseの広告ユニットを表示するための共通配置エリア。
- * NEXT_PUBLIC_ADSENSE_ID が未設定（審査申請前）の間は、記事の見た目を
- * 崩さないプレースホルダー枠を表示する。
+ * Google AdSenseの「手動の広告ユニット」を表示するための共通配置エリア。
+ *
+ * 【現在は未使用】広告はAdSense管理画面の「自動広告」で配置する方針のため、
+ * どのページからも使っていません。特定の位置に広告を固定したくなった場合は、
+ * AdSense管理画面で広告ユニットを作成し、発行された「data-ad-slot」の数字を
+ * slot に渡して <AdSlot slot="1234567890" /> のように使ってください
+ * （仮の数字のまま使うと、広告が正しく表示されません）。
+ *
+ * NEXT_PUBLIC_ADSENSE_ID が未設定の間は、見た目を崩さないプレースホルダー枠を表示する。
  */
 export function AdSlot({ slot, format = "auto", className, label = "広告" }: AdSlotProps) {
   const adRef = useRef<HTMLModElement>(null);

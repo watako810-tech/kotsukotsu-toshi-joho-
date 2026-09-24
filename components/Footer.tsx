@@ -1,6 +1,12 @@
 import Link from "next/link";
 import { TrendingUp } from "lucide-react";
 
+const SITE_LINKS = [
+  { href: "/about", label: "運営者情報" },
+  { href: "/privacy", label: "プライバシーポリシー・免責事項" },
+  { href: "/contact", label: "お問い合わせ" },
+];
+
 export function Footer() {
   return (
     <footer className="border-t border-line bg-navy">
@@ -39,8 +45,17 @@ export function Footer() {
           </div>
           <div>
             <p className="mb-3 text-sm font-semibold text-white">サイトについて</p>
-            <p className="text-sm leading-relaxed text-slate-400">
-              当サイトの情報は投資勧誘を目的としたものではありません。詳細は各記事末尾の免責事項をご確認ください。
+            <ul className="space-y-2 text-sm">
+              {SITE_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-slate-300 hover:text-emerald">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 text-xs leading-relaxed text-slate-400">
+              当サイトの情報は投資勧誘を目的としたものではありません。
             </p>
           </div>
         </div>

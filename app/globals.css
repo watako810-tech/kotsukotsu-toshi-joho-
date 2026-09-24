@@ -101,15 +101,6 @@ body {
   @apply my-10 border-line;
 }
 
-/* AD_SLOTコメント・div等、記事内に紛れ込んだ生HTMLの広告枠を綺麗に見せる */
-.article-prose .ad-slot {
-  @apply relative my-8 flex min-h-[100px] items-center justify-center overflow-hidden rounded-card border border-dashed border-line bg-slate-50 text-xs text-muted;
-}
-
-.article-prose .ad-slot::before {
-  content: "広告枠（AdSense設定後に表示されます）";
-}
-
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-up {
     animation: none;

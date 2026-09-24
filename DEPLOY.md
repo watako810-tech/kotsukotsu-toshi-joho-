@@ -71,7 +71,8 @@ Vercelの「Settings → Environment Variables」で以下を設定してくだ�
 | --- | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | 発行された `https://....vercel.app` のURL | 初回デプロイ後にURLが分かってから設定し、再デプロイしてください |
 | `NEXT_PUBLIC_API_BASE_URL` | `stock-platform/backend` を別途デプロイした場合はそのURL | 未デプロイの間は設定しなくてOK（市況データは参考値表示になります） |
-| `NEXT_PUBLIC_ADSENSE_ID` | AdSense審査通過後に発行されるPublisher ID | 未取得の間は設定しなくてOK（プレースホルダー表示になります） |
+| `NEXT_PUBLIC_ADSENSE_ID` | AdSense審査通過後に発行されるPublisher ID | 未取得の間は設定しなくてOK |
+| `NEXT_PUBLIC_CONTACT_FORM_URL` | お問い合わせ用GoogleフォームのURL | 未設定の間はお問い合わせページに「準備中」と表示されます |
 
 環境変数を追加・変更した後は、Vercelの「Deployments」タブから最新デプロイを「Redeploy」すると反映されます。
 

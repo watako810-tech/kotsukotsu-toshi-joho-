@@ -10,11 +10,21 @@ import GithubSlugger from "github-slugger";
 import type { TocItem } from "./types";
 
 /**
+ * 記事Markdownに埋め込まれた手動の広告枠（<!-- AD_SLOT: ... --> 〜 <!-- /AD_SLOT -->）を取り除く。
+ * 広告はGoogle AdSenseの「自動広告」で配置するため、記事内の仮の広告枠は表示しない。
+ * （generate_daily_content.py の出力など、古い形式の記事をそのまま置いても崩れないようにするため）
+ */
+function stripManualAdSlots(markdown: string): string {
+  return markdown.replace(/<!--\s*AD_SLOT:[\s\S]*?<!--\s*\/AD_SLOT\s*-->\s*/g, "");
+}
+
+/**
  * MarkdownをHTML文字列に変換し、同時に見出し(h2/h3)から目次(TOC)を抽出する。
  * TOCのid生成には rehype-slug と同じ github-slugger アルゴリズムを使い、
  * 本文側の見出しIDとTOCのリンク先を一致させている。
  */
-export async function renderMarkdown(markdown: string): Promise<{ html: string; toc: TocItem[] }> {
+export async function renderMarkdown(source: string): Promise<{ html: string; toc: TocItem[] }> {
+  const markdown = stripManualAdSlots(source);
   const tree = unified().use(remarkParse).use(remarkGfm).parse(markdown);
 
   const slugger = new GithubSlugger();
