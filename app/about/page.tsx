@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { StaticPage } from "@/components/StaticPage";
-import { OPERATOR_NAME, SITE_NAME } from "@/lib/site";
+import { OPERATOR_NAME, SITE_NAME, getSiteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "運営者情報",
   description: `${SITE_NAME}の運営者情報とサイトの運営方針について。`,
 };
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const siteUrl = getSiteUrl();
 
 export default function AboutPage() {
   const rows: { label: string; value: React.ReactNode }[] = [

@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { getAdsenseId } from "@/lib/adsense";
+import { getSiteUrl } from "@/lib/site";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
@@ -21,7 +22,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 const adsenseId = getAdsenseId();
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
