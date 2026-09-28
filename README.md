@@ -89,10 +89,14 @@ excerpt: "記事一覧カードに表示される1〜2文の要約"
 
 未設定の間は、お問い合わせページに「準備中」と表示されます。
 
-## 本番デプロイの目安
+## 本番デプロイ
 
-- Vercel（`NEXT_PUBLIC_API_BASE_URL` に `stock-platform/backend` の本番URLを、`NEXT_PUBLIC_SITE_URL` に
-  このサイトの独自ドメインを設定）
+`next.config.mjs` で `output: "export"`（静的書き出し）を指定しているため、`npm run build` で
+`out/` フォルダに静的なHTML一式が出力されます。広告を載せる本番サイトは、無料プランでも商用利用できる
+Cloudflare Pagesで公開します（Vercelの無料プランは広告掲載が禁止）。手順は `DEPLOY_CLOUDFLARE.md` を参照してください。
+
+ローカルで書き出し結果を確認したい場合は、`npm run build` のあと `npx serve out` で表示できます
+（`npm run start` は静的書き出しでは使えません）。
 
 ## 今後の拡張ポイント
 

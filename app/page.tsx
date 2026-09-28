@@ -8,7 +8,8 @@ import { NoteBanner } from "@/components/NoteBanner";
 import { getMarketSummary, getScreenerComparison } from "@/lib/api";
 import { getAllArticleMeta } from "@/lib/articles";
 
-export const revalidate = 300;
+// 静的書き出し（output: "export"）のため、市況データはビルド時点の値で表示される。
+// 平日の自動投稿でpushされるたびに再ビルドされるので、少なくとも1日1回は更新される。
 
 export default async function HomePage() {
   const [{ indices, isLive: marketLive, asOf }, { jp, us, isLive: screenerLive }] = await Promise.all([

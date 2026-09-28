@@ -12,6 +12,9 @@ interface Props {
   params: { slug: string };
 }
 
+// 静的書き出しのため、ビルド時に存在する記事のページだけを生成する
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return getAllArticleSlugs().map((slug) => ({ slug }));
 }

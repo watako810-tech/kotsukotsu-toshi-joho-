@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { getAdsenseId } from "@/lib/adsense";
 
-export const revalidate = 3600;
+// 静的書き出し時に out/ads.txt として出力する
+export const dynamic = "force-static";
 
 export function GET() {
   const adsenseId = getAdsenseId();

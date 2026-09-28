@@ -7,9 +7,9 @@ import screenerSeed from "@/data/screener-seed.json";
 // サイトが常に完成した見た目で動作するようにしている。
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000";
 
-async function apiFetch<T>(path: string, revalidateSeconds = 300): Promise<T> {
+// 静的書き出し（output: "export"）のため、データはビルド時に1回だけ取得する。
+async function apiFetch<T>(path: string): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`, {
-    next: { revalidate: revalidateSeconds },
     signal: AbortSignal.timeout(4000),
   });
 
@@ -29,7 +29,7 @@ export interface MarketSummaryResult {
 /** 本日の市況サマリー（日経平均・S&P500）。 */
 export async function getMarketSummary(): Promise<MarketSummaryResult> {
   try {
-    const indices = await apiFetch<IndexInfo[]>("/api/market/indices?range=1mo", 300);
+    const indices = await apiFetch<IndexInfo[]>("/api/market/indices?range=1mo");
     if (!indices || indices.length === 0) throw new Error("empty response");
     return { indices, isLive: true };
   } catch {
@@ -55,8 +55,7 @@ export async function getScreenerComparison(): Promise<ScreenerResult> {
   try {
     const universe = [...JP_SYMBOLS, ...US_SYMBOLS].join(",");
     const results = await apiFetch<StockInfo[]>(
-      `/api/stocks/screener?universe=${encodeURIComponent(universe)}`,
-      300
+      `/api/stocks/screener?universe=${encodeURIComponent(universe)}`
     );
     if (!results || results.length === 0) throw new Error("empty response");
 

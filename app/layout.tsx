@@ -41,15 +41,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main>{children}</main>
         <Footer />
+        {/*
+          AdSenseの読み込みタグ。<body>の外（<html>の直下）に置くと、ブラウザが自動で
+          <body>内へ移動させてしまい、Reactの表示の照合（ハイドレーション）でエラーになるため、
+          <body>の中に置く。beforeInteractive を指定しているので、実際の読み込みは他の処理より先に行われる。
+        */}
+        {adsenseId && (
+          <Script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseId}`}
+            crossOrigin="anonymous"
+            strategy="beforeInteractive"
+          />
+        )}
       </body>
-      {adsenseId && (
-        <Script
-          async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseId}`}
-          crossOrigin="anonymous"
-          strategy="beforeInteractive"
-        />
-      )}
     </html>
   );
 }
