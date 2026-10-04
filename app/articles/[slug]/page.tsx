@@ -7,6 +7,11 @@ import { formatDateLabel } from "@/lib/format";
 import { TableOfContents } from "@/components/TableOfContents";
 import { DisclaimerBlock } from "@/components/DisclaimerBlock";
 import { Badge } from "@/components/Badge";
+import { MarketOverview } from "@/components/MarketOverview";
+
+// 相場を扱う記事では、本文の下にTradingViewの値動きを表示する。
+// 記事本文には細かい数値を書かず、正確な数値はこの表示で確認してもらう。
+const MARKET_CATEGORIES = ["マーケット解説", "マーケット概況"];
 
 interface Props {
   params: { slug: string };
@@ -31,6 +36,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ArticleDetailPage({ params }: Props) {
   const article = await getArticleBySlug(params.slug);
   if (!article) notFound();
+
+  const showMarket = !!article.category && MARKET_CATEGORIES.includes(article.category);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:py-14">
@@ -68,6 +75,15 @@ export default async function ArticleDetailPage({ params }: Props) {
           <TableOfContents toc={article.toc} />
         </aside>
       </div>
+
+      {showMarket && (
+        <div className="mt-12">
+          <MarketOverview
+            heading="いまの値動きをチェック"
+            note="記事を書いた時点ではなく、現在の値動きです"
+          />
+        </div>
+      )}
 
       <DisclaimerBlock />
     </div>

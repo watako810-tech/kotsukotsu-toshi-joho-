@@ -7,17 +7,30 @@ const MARKETS = [
   { symbol: "FX:USDJPY", label: "ドル円" },
 ];
 
-/** トップページの「マーケット概況」。値動きはTradingViewのウィジェットで表示する。 */
-export function MarketOverview() {
+interface MarketOverviewProps {
+  /** 見出しの文言（記事ページでは「いまの値動き」などに差し替える） */
+  heading?: string;
+  /** 見出し横に出す注意書き */
+  note?: string;
+}
+
+/**
+ * 日経平均・S&P500・ドル円の値動き。数値はTradingViewのウィジェットがそのまま表示する
+ * （このサイトは株価データを取得・保存・転記しない）。トップページと、マーケット解説の記事ページで使う。
+ */
+export function MarketOverview({
+  heading = "マーケット概況",
+  note = "価格は遅れて表示される場合があります",
+}: MarketOverviewProps = {}) {
   return (
     <section aria-labelledby="market-overview-heading">
       <div className="mb-5 flex flex-wrap items-end justify-between gap-2">
         <h2 id="market-overview-heading" className="text-xl font-bold text-navy sm:text-2xl">
-          マーケット概況
+          {heading}
         </h2>
         <span className="flex items-center gap-1.5 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-muted">
           <Info size={13} />
-          価格は遅れて表示される場合があります
+          {note}
         </span>
       </div>
 
