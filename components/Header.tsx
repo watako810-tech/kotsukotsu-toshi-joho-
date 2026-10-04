@@ -7,7 +7,7 @@ import { Menu, X, TrendingUp } from "lucide-react";
 const NAV_LINKS = [
   { href: "/", label: "ホーム" },
   { href: "/articles", label: "記事一覧" },
-  { href: "/#screener", label: "銘柄比較" },
+  { href: "/#screener", label: "代表銘柄" },
   { href: "/#note", label: "有料マガジン" },
 ];
 

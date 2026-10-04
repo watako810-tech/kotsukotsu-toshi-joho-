@@ -1,22 +1,16 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Hero } from "@/components/Hero";
-import { MarketSummary } from "@/components/MarketSummary";
-import { ScreenerTable } from "@/components/ScreenerTable";
+import { MarketOverview } from "@/components/MarketOverview";
+import { StockWatchlist } from "@/components/StockWatchlist";
 import { ArticleCard } from "@/components/ArticleCard";
 import { NoteBanner } from "@/components/NoteBanner";
-import { getMarketSummary, getScreenerComparison } from "@/lib/api";
 import { getAllArticleMeta } from "@/lib/articles";
 
-// 静的書き出し（output: "export"）のため、市況データはビルド時点の値で表示される。
-// 平日の自動投稿でpushされるたびに再ビルドされるので、少なくとも1日1回は更新される。
+// 株価・指数の値動きは、TradingViewの無料ウィジェットで表示する（MarketOverview / StockWatchlist）。
+// このサイト自身は株価データを保存・配布しない。
 
-export default async function HomePage() {
-  const [{ indices, isLive: marketLive, asOf }, { jp, us, isLive: screenerLive }] = await Promise.all([
-    getMarketSummary(),
-    getScreenerComparison(),
-  ]);
-
+export default function HomePage() {
   const articles = getAllArticleMeta().slice(0, 6);
 
   return (
@@ -24,9 +18,9 @@ export default async function HomePage() {
       <Hero />
 
       <div className="mx-auto max-w-6xl space-y-16 px-4 py-14">
-        <MarketSummary indices={indices} isLive={marketLive} asOf={asOf} />
+        <MarketOverview />
 
-        <ScreenerTable jp={jp} us={us} isLive={screenerLive} />
+        <StockWatchlist id="screener" />
 
         <section aria-labelledby="latest-articles-heading">
           <div className="mb-5 flex flex-wrap items-end justify-between gap-2">

@@ -33,7 +33,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/#screener" className="text-slate-300 hover:text-emerald">
-                  日米優良株スクリーニング比較
+                  日米の代表的な銘柄
                 </Link>
               </li>
               <li>

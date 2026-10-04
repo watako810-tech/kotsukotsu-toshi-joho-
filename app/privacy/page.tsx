@@ -61,6 +61,15 @@ export default function PrivacyPage() {
         にアクセスすると、Google以外の第三者配信事業者のCookieも無効にできます。
       </p>
 
+      <h2>外部サービスの埋め込みについて</h2>
+      <p>
+        当サイトでは、株価や指数の値動きを表示するために、TradingView社が提供するウィジェット（埋め込み型の表示部品）を
+        利用しています。ウィジェットの表示にあたり、TradingView社がCookieなどを使用する場合があります。
+        同社における情報の取り扱いについては、
+        <ExternalLink href="https://jp.tradingview.com/privacy-policy/">TradingViewのプライバシーポリシー</ExternalLink>
+        をご確認ください。ウィジェットに表示される価格は、遅れて表示される場合があります。
+      </p>
+
       <h2>アクセス解析ツールについて</h2>
       <p>
         当サイトでは現在、アクセス解析ツールは使用していません。今後導入する場合は、使用するツールとデータの取り扱いを
